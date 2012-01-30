@@ -10,10 +10,11 @@ set cinoptions=(0g0
 set expandtab
 set smarttab
 set shiftwidth=2
+set list listchars=tab:».,trail:°
 
 set nowrap
 
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 set pastetoggle=<F11>
 set wildmenu
@@ -32,7 +33,7 @@ au FileType cf set tabstop=4|set shiftwidth=4
 au FileType sql set tabstop=4|set shiftwidth=4
 au FileType python set tabstop=4|set shiftwidth=4
 
-colorscheme zenburn
+colorscheme lucius
 
 map ; :
 imap jj <ESC>
