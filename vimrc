@@ -11,6 +11,7 @@ set expandtab
 set smarttab
 set shiftwidth=2
 set list listchars=tab:».,trail:°
+set showbreak=>\ 
 
 set nowrap
 
