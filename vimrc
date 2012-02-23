@@ -46,6 +46,10 @@ colorscheme lucius
 map ; :
 imap jj <ESC>
 
+" Create a new tmux window when firing up swank for interactive lisp coding.
+
+let g:slimv_swank_cmd = '!tmux new-window -d -n swank "sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp" &'
+
 "
 " Enable 256-color if the terminal type is xterm.  This is a hack.
 "
