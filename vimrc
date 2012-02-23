@@ -14,7 +14,7 @@ set list listchars=tab:».,trail:°
 
 set nowrap
 
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 set pastetoggle=<F11>
 set wildmenu
@@ -24,6 +24,13 @@ set background=dark
 set ignorecase
 set smartcase
 
+if has('gui_running')
+  let &guicursor = &guicursor . ",a:blinkon0"
+  set guioptions=
+  set columns=160
+  set lines=50
+endif
+
 let g:localvimrc_ask=0
 let g:autotagVerbosityLevel=9
 let g:localvimrc_sandbox=0
@@ -32,6 +39,7 @@ au FileType make set noexpandtab|set nosmarttab
 au FileType cf set tabstop=4|set shiftwidth=4
 au FileType sql set tabstop=4|set shiftwidth=4
 au FileType python set tabstop=4|set shiftwidth=4
+au FileType text set wrap|set lbr
 
 colorscheme lucius
 
@@ -59,6 +67,11 @@ endif
 " file being edited.  This autocommand hook makes that happen.
 "
 autocmd BufEnter * exec "cd " . fnameescape(expand("%:p:h"))
+
+"
+" Weirdly, .txt files don't automatically trigger the text filetype...
+"
+autocmd BufRead,BufNewFile *.txt setfiletype text
 
 "
 " I use the localvimrc plugin and lvimrc files in my projects to manage
