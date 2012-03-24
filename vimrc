@@ -25,8 +25,9 @@ set ignorecase
 set smartcase
 
 if has('gui_running')
-  let &guicursor = &guicursor . ",a:blinkon0"
-  set guioptions=
+  set guicursor=a:blinkoff0
+  set guioptions=aegit
+  set guifont=Inconsolata\ Medium\ 12
   set columns=160
   set lines=50
 endif
