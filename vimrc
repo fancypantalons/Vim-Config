@@ -1,3 +1,60 @@
+"{{{ User-defined Functions
+
+"
+" I use the localvimrc plugin and lvimrc files in my projects to manage
+" project-specific settings (such as build configuration and so forth).  This
+" function provides some common logic for setting up seach paths, the CommandT
+" plugin, and adds standard ctags/cscope databases.
+"
+function! LocalVimRCLoadedHook(rcpath)
+    let g:local_vimrc_path = a:rcpath
+    let g:project_cscope_db = g:local_vimrc_path . "/.git/cscope.out"
+    let g:project_ctags_db = g:local_vimrc_path . "/.git/tags"
+
+    exec "set path=" . g:local_vimrc_path . "/**"
+
+    exec "map <leader>t :CommandTFlush<cr>\\|:CommandT " . g:local_vimrc_path . "<cr>"
+    map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
+
+    if filereadable(g:project_cscope_db)
+        " Assuming the tags databases are rebuilt using make, we add
+        " autocommand hooks to reload the cscope database when the make
+        " command is run.
+
+        au QuickFixCmdPre make exec("cs kill -1")
+        au QuickFixCmdPost make exec("cs add " . g:project_cscope_db . " " . g:local_vimrc_path)
+
+        " Now do it right meow.
+        cs kill -1
+        exec "cs add " . g:project_cscope_db . " " . g:local_vimrc_path
+    endif
+
+    if filereadable(g:project_ctags_db)
+        exec "set tags=" . fnameescape(g:project_ctags_db)
+    endif
+endfunction
+
+"
+" Simple Vim function for generating a GUID and inserting it into the current
+" buffer.
+"
+function! MakeGuid()
+python << EOF
+import vim
+import uuid
+vim.command('let @z="' + str(uuid.uuid4()).upper() + '"')
+vim.command('normal "zP');
+
+(row, col) = vim.current.window.cursor
+
+vim.current.window.cursor = (row, col + 1)
+EOF
+endfunction
+
+"}}}
+
+"{{{ Configuration settings
+
 syntax on
 filetype plugin indent on
 
@@ -45,13 +102,10 @@ au FileType text set wrap|set lbr
 
 colorscheme lucius
 
-map ; :
-imap jj <ESC>
 
 " Create a new tmux window when firing up swank for interactive lisp coding.
 
 let g:slimv_swank_cmd = '!tmux new-window -d -n swank "sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp" &'
-
 "
 " Enable 256-color if the terminal type is xterm.  This is a hack.
 "
@@ -68,6 +122,14 @@ if &term =~ "xterm"
      endif
 endif
 
+"}}}
+
+"{{{ Key mapping and autocmd bindings
+
+map ; :
+imap jj <ESC>
+map <leader>g :call MakeGuid()<cr>
+
 "
 " I prefer editors to switch the current working directory to that of the
 " file being edited.  This autocommand hook makes that happen.
@@ -79,37 +141,4 @@ autocmd BufEnter * exec "cd " . fnameescape(expand("%:p:h"))
 "
 autocmd BufRead,BufNewFile *.txt setfiletype text
 
-"
-" I use the localvimrc plugin and lvimrc files in my projects to manage
-" project-specific settings (such as build configuration and so forth).  This
-" function provides some common logic for setting up seach paths, the CommandT
-" plugin, and adds standard ctags/cscope databases.
-"
-function! LocalVimRCLoadedHook(rcpath)
-    let g:local_vimrc_path = a:rcpath
-    let g:project_cscope_db = g:local_vimrc_path . "/.git/cscope.out"
-    let g:project_ctags_db = g:local_vimrc_path . "/.git/tags"
-
-    exec "set path=" . g:local_vimrc_path . "/**"
-
-    exec "map <leader>t :CommandTFlush<cr>\\|:CommandT " . g:local_vimrc_path . "<cr>"
-    map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
-
-    if filereadable(g:project_cscope_db)
-        " Assuming the tags databases are rebuilt using make, we add
-        " autocommand hooks to reload the cscope database when the make
-        " command is run.
-
-        au QuickFixCmdPre make exec("cs kill -1")
-        au QuickFixCmdPost make exec("cs add " . g:project_cscope_db . " " . g:local_vimrc_path)
-
-        " Now do it right meow.
-        cs kill -1
-        exec "cs add " . g:project_cscope_db . " " . g:local_vimrc_path
-    endif
-
-    if filereadable(g:project_ctags_db)
-        exec "set tags=" . fnameescape(g:project_ctags_db)
-    endif
-endfunction
-
+"}}}
