@@ -34,6 +34,12 @@ function! LocalVimRCLoadedHook(rcpath)
     endif
 endfunction
 
+function! BufEnterHook()
+    if expand("%") !~ "fugitive"
+        exec "cd " . fnameescape(expand("%:p:h"))
+    endif
+endfunction
+
 "
 " Simple Vim function for generating a GUID and inserting it into the current
 " buffer.
@@ -134,7 +140,7 @@ map <leader>g :call MakeGuid()<cr>
 " I prefer editors to switch the current working directory to that of the
 " file being edited.  This autocommand hook makes that happen.
 "
-autocmd BufEnter * exec "cd " . fnameescape(expand("%:p:h"))
+autocmd BufEnter * call BufEnterHook()
 
 "
 " Weirdly, .txt files don't automatically trigger the text filetype...
