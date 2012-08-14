@@ -1,3 +1,10 @@
+" Attempt to load pathogen for package management.  If it's not availble
+" no biggie.
+try
+    call pathogen#infect()
+catch /.*/
+endtry
+
 "{{{ User-defined Functions
 
 "
@@ -73,7 +80,6 @@ set cinoptions=(0g0
 set expandtab
 set smarttab
 set shiftwidth=2
-set list listchars=tab:».,trail:°
 set showbreak=>\ 
 
 set nowrap
@@ -107,6 +113,10 @@ au FileType python set tabstop=4|set shiftwidth=4
 au FileType text set wrap|set lbr
 
 colorscheme lucius
+
+if ! has('win32')
+    set list listchars=tab:».,trail:°
+endif
 
 
 " Create a new tmux window when firing up swank for interactive lisp coding.
