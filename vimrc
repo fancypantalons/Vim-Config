@@ -114,7 +114,9 @@ au FileType text set wrap|set lbr
 
 colorscheme lucius
 
-if ! has('win32')
+if has('win32')
+    let &grepprg="\"C:/Program Files (x86)/GnuWin32/bin/grep.exe\" -n $*"
+else
     set list listchars=tab:».,trail:°
 endif
 
