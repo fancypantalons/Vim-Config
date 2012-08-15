@@ -147,6 +147,13 @@ endif
 map ; :
 imap jj <ESC>
 map <leader>g :call MakeGuid()<cr>
+map <leader>s :Gstatus<cr>
+map <leader>d :Gdiff<cr>
+map <leader>l :Glog<cr>
+map <leader>b :Gblame<cr>
+map <leader>w :Gwrite<cr>
+map <leader>r :Gread<cr>
+map <leader>c :Gcommit<cr>
 
 "
 " I prefer editors to switch the current working directory to that of the
