@@ -115,7 +115,11 @@ au FileType text set wrap|set lbr
 colorscheme lucius
 
 if has('win32')
-    let &grepprg="\"C:/Program Files (x86)/GnuWin32/bin/grep.exe\" -n $*"
+    let &grepprg="\"C:/GnuWin32/bin/grep.exe\" -n $*"
+    let g:netrw_localcopycmd="C:/GnuWin32/bin/cp.exe"
+    let g:netrw_localmovecmd="C:/GnuWin32/bin/mv.exe"
+    let g:netrw_localmkdir="C:/GnuWin32/bin/mkdir.exe"
+    let g:netrw_localrmdir="C:/GnuWin32/bin/rmdir.exe"
 else
     set list listchars=tab:».,trail:°
 endif
