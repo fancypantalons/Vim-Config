@@ -112,7 +112,9 @@ au FileType sql set tabstop=4|set shiftwidth=4
 au FileType python set tabstop=4|set shiftwidth=4
 au FileType text set wrap|set lbr
 
-colorscheme lucius
+if empty($MSYSTEM) || has('gui_running')
+    colorscheme lucius
+endif
 
 if has('win32')
     let &grepprg="\"C:/GnuWin32/bin/grep.exe\" -n $*"
