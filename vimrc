@@ -172,4 +172,15 @@ autocmd BufEnter * call BufEnterHook()
 "
 autocmd BufRead,BufNewFile *.txt setfiletype text
 
+"
+" Check if this file contains mixed line endings but was detected as a unix
+" file.  If so, reload as a DOS file.  This helps with msysgit when editing
+" diff hunks
+"
+autocmd BufReadPost * nested
+      \ if ! exists('b:reload_dos') && ! &binary && &ff=='unix' && (0 < search('\r$', 'nc')) |
+      \   let b:reload_dos = 1 |
+      \   e ++ff=dos |
+      \ endif
+
 "}}}
