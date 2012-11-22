@@ -41,9 +41,17 @@ function! LocalVimRCLoadedHook(rcpath)
     endif
 endfunction
 
-function! BufEnterHook()
+function! ChangeToFileDir()
     if expand("%") !~ "fugitive"
         exec "cd " . fnameescape(expand("%:p:h"))
+    endif
+endfunction
+
+function! RecheckFileTye()
+    if (expand("%") != "") && ! exists('b:reload_dos') && ! &binary && (&ff == 'unix') && (0 < search('\r$', 'nc'))
+        let b:reload_dos = 1
+
+        e ++ff=dos
     endif
 endfunction
 
@@ -162,10 +170,10 @@ map <leader>r :Gread<cr>
 map <leader>c :Gcommit<cr>
 
 "
-" I prefer editors to switch the current working directory to that of the
+" I prefer editors which switch the current working directory to that of the
 " file being edited.  This autocommand hook makes that happen.
 "
-autocmd BufEnter * call BufEnterHook()
+autocmd BufEnter * call ChangeToFileDir()
 
 "
 " Weirdly, .txt files don't automatically trigger the text filetype...
@@ -177,10 +185,6 @@ autocmd BufRead,BufNewFile *.txt setfiletype text
 " file.  If so, reload as a DOS file.  This helps with msysgit when editing
 " diff hunks
 "
-autocmd BufReadPost * nested
-      \ if ! exists('b:reload_dos') && ! &binary && &ff=='unix' && (0 < search('\r$', 'nc')) |
-      \   let b:reload_dos = 1 |
-      \   e ++ff=dos |
-      \ endif
+autocmd BufReadPost * nested call RecheckFileTye()
 
 "}}}
