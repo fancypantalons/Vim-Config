@@ -105,9 +105,16 @@ set smartcase
 if has('gui_running')
   set guicursor=a:blinkoff0
   set guioptions=aegit
-  set guifont=Inconsolata\ Medium\ 12
-  set columns=160
-  set lines=50
+
+  if has('win32')
+      set guifont=Consolas:h10.5
+      set columns=180
+      set lines=50
+  else
+      set guifont=Inconsolata\ Medium\ 12
+      set columns=160
+      set lines=50
+  endif
 endif
 
 let g:localvimrc_ask=0
