@@ -20,8 +20,6 @@ function! LocalVimRCLoadedHook(rcpath)
 
     exec "set path=" . g:local_vimrc_path . "/**"
 
-    exec "map <leader>t :CtrlPMixed<cr>"
-
     if filereadable(g:project_cscope_db)
         " Assuming the tags databases are rebuilt using make, we add
         " autocommand hooks to reload the cscope database when the make
@@ -174,6 +172,8 @@ map <leader>b :Gblame<cr>
 map <leader>w :Gwrite<cr>
 map <leader>r :Gread<cr>
 map <leader>c :Gcommit<cr>
+
+map <leader>t :CtrlPMixed<cr>
 
 "
 " I prefer editors which switch the current working directory to that of the
