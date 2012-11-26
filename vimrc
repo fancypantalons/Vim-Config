@@ -10,8 +10,8 @@ endtry
 "
 " I use the localvimrc plugin and lvimrc files in my projects to manage
 " project-specific settings (such as build configuration and so forth).  This
-" function provides some common logic for setting up seach paths, the CommandT
-" plugin, and adds standard ctags/cscope databases.
+" function provides some common logic for setting up seach paths, and adds
+" standard ctags/cscope databases.
 "
 function! LocalVimRCLoadedHook(rcpath)
     let g:local_vimrc_path = a:rcpath
@@ -20,8 +20,7 @@ function! LocalVimRCLoadedHook(rcpath)
 
     exec "set path=" . g:local_vimrc_path . "/**"
 
-    exec "map <leader>t :CommandTFlush<cr>\\|:CommandT " . g:local_vimrc_path . "<cr>"
-    map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
+    exec "map <leader>t :CtrlPMixed<cr>"
 
     if filereadable(g:project_cscope_db)
         " Assuming the tags databases are rebuilt using make, we add
@@ -96,6 +95,7 @@ set statusline=%<%f\ %h%m%r%{exists('g:loaded_fugitive')?fugitive#statusline():'
 set laststatus=2
 set pastetoggle=<F11>
 set wildmenu
+set wildignore+=*.class
 set hid
 set background=dark
 
@@ -140,7 +140,6 @@ if has('win32')
 else
     set list listchars=tab:».,trail:°
 endif
-
 
 " Create a new tmux window when firing up swank for interactive lisp coding.
 
