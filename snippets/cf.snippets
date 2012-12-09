@@ -19,3 +19,14 @@ snippet <cfqueryparam
 	<cfqueryparam value="#${1}#" cfsqltype="${2}" />
 snippet <cfproperty
 	<cfproperty name="${1}" type="${2}" hint="${3}" />
+snippet <cfcomponent
+	<cfcomponent output="false" extends="DynamicAccessors">
+		<cffunction name       = "init"
+					access     = "public"
+					returntype = "${1}">
+			
+			<cfset variables.instance = StructNew() />
+			
+			<cfreturn this />
+		</cffunction>
+	</cfcomponent>
