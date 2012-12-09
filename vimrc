@@ -2,6 +2,7 @@
 " no biggie.
 try
     call pathogen#infect()
+    Helptags
 catch /.*/
 endtry
 
@@ -142,6 +143,11 @@ endif
 " Create a new tmux window when firing up swank for interactive lisp coding.
 
 let g:slimv_swank_cmd = '!tmux new-window -d -n swank "sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp" &'
+
+" NERDTree settings
+
+let NERDTreeShowBookmarks=1
+
 "
 " Enable 256-color if the terminal type is xterm.  This is a hack.
 "
@@ -174,6 +180,8 @@ map <leader>r :Gread<cr>
 map <leader>c :Gcommit<cr>
 
 map <leader>t :CtrlPMixed<cr>
+map <leader>n :NERDTreeToggle<cr>
+map <leader>N :NERDTreeFind<cr>
 
 "
 " I prefer editors which switch the current working directory to that of the
