@@ -192,5 +192,6 @@ autocmd BufRead,BufNewFile *.txt setfiletype text
 " diff hunks
 "
 autocmd BufReadPost * nested call RecheckFileTye()
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "}}}
