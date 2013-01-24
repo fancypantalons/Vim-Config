@@ -46,7 +46,7 @@ function! ChangeToFileDir()
 endfunction
 
 function! RecheckFileTye()
-    if (expand("%") != "") && ! exists('b:reload_dos') && ! &binary && (&ff == 'unix') && (0 < search('\r$', 'nc'))
+    if (expand("%") != "") && (expand("%") !~ "fugitive") && ! exists('b:reload_dos') && ! &binary && (&ff == 'unix') && (0 < search('\r$', 'nc'))
         let b:reload_dos = 1
 
         e ++ff=dos
