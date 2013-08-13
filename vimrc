@@ -101,6 +101,8 @@ set background=dark
 set ignorecase
 set smartcase
 
+set noequalalways
+
 if has('gui_running')
   set guicursor=a:blinkoff0
   set guioptions=aegit
