@@ -122,6 +122,11 @@ let g:localvimrc_ask=0
 let g:autotagVerbosityLevel=9
 let g:localvimrc_sandbox=0
 
+let g:airline_theme='bubblegum'
+let g:airline_detect_whitespace=0
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
 au FileType make set noexpandtab|set nosmarttab
 au FileType cf set tabstop=4|set shiftwidth=4
 au FileType sql set tabstop=4|set shiftwidth=4
