@@ -192,6 +192,9 @@ map <leader>t :CtrlPMixed<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>N :NERDTreeFind<cr>
 
+cnoremap bd<CR> execute "normal \<Plug>Kwbd"<CR>
+cnoremap bd!<CR> execute "normal \<Plug>KwbdForce"<CR>
+
 "
 " I prefer editors which switch the current working directory to that of the
 " file being edited.  This autocommand hook makes that happen.
