@@ -103,6 +103,8 @@ set smartcase
 
 set noequalalways
 
+set ttimeoutlen=50
+
 if has('gui_running')
   set guicursor=a:blinkoff0
   set guioptions=aegit
