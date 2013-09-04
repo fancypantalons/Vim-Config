@@ -45,11 +45,15 @@ function! ChangeToFileDir()
     endif
 endfunction
 
-function! RecheckFileTye()
-    if (expand("%") != "") && (expand("%") !~ "fugitive") && ! exists('b:reload_dos') && ! &binary && (&ff == 'unix') && (0 < search('\r$', 'nc'))
+function! RecheckFileType()
+    if (expand("%") != "") && (expand("%") !~ "fugitive") && ! exists('b:reload_dos') && ! &binary && (&ff == 'unix') && (search('\r$', 'nc') > 0)
         let b:reload_dos = 1
 
         e ++ff=dos
+    endif
+
+    if (search('^%YAML ') > 0)
+        set ft=yaml
     endif
 endfunction
 
@@ -195,7 +199,7 @@ autocmd BufRead,BufNewFile *.txt setfiletype text
 " file.  If so, reload as a DOS file.  This helps with msysgit when editing
 " diff hunks
 "
-autocmd BufReadPost * nested call RecheckFileTye()
+autocmd BufReadPost * nested call RecheckFileType()
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "}}}
