@@ -156,28 +156,11 @@ let g:slimv_swank_cmd = '!tmux new-window -d -n swank "sbcl --load /usr/share/co
 
 let NERDTreeShowBookmarks=1
 
-"
-" Enable 256-color if the terminal type is xterm.  This is a hack.
-"
-
-if &term =~ "xterm"
-    if has("terminfo")
-        set t_Co=16
-        set t_AB=[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm
-        set t_AF=[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm
-     else
-        set t_Co=16
-        set t_Sf=[3%dm
-        set t_Sb=[4%dm
-     endif
-endif
-
 "}}}
 
 "{{{ Key mapping and autocmd bindings
 
 map ; :
-imap jj <ESC>
 map <leader>g :call MakeGuid()<cr>
 map <leader>s :Gstatus<cr>
 map <leader>d :Gdiff<cr>
