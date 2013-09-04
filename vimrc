@@ -90,7 +90,6 @@ set showbreak=>\
 
 set nowrap
 
-set statusline=%<%f\ %h%m%r%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 set pastetoggle=<F11>
 set wildmenu
