@@ -202,4 +202,12 @@ autocmd BufRead,BufNewFile *.txt setfiletype text
 autocmd BufReadPost * nested call RecheckFileType()
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
+"
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" location list window, or close it when is has become empty.
+"
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
 "}}}
