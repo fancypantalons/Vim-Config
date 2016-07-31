@@ -108,6 +108,8 @@ set noequalalways
 
 set ttimeoutlen=50
 
+set modeline
+
 if has('gui_running')
   set guicursor=a:blinkoff0
   set guioptions=aegit
@@ -170,7 +172,8 @@ map ; :
 map <leader>g :call MakeGuid()<cr>
 map <leader>s :Gstatus<cr>
 map <leader>d :Gdiff<cr>
-map <leader>l :Glog<cr>
+map <leader>l :Glog -- %<cr>
+map <leader>L :Glog<cr>
 map <leader>b :Gblame<cr>
 map <leader>w :Gwrite<cr>
 map <leader>r :Gread<cr>
@@ -193,6 +196,7 @@ autocmd BufEnter * call ChangeToFileDir()
 " Weirdly, .txt files don't automatically trigger the text filetype...
 "
 autocmd BufRead,BufNewFile *.txt setfiletype text
+autocmd BufRead,BufNewFile *.jmte setfiletype html
 
 "
 " Check if this file contains mixed line endings but was detected as a unix
