@@ -118,6 +118,10 @@ if has('gui_running')
       set guifont=Consolas:h10.5
       set columns=180
       set lines=50
+  elseif has('gui_macvim')
+      set guifont=Inconsolata:h14
+      set columns=160
+      set lines=50
   else
       set guifont=Inconsolata\ Medium\ 12
       set columns=160
