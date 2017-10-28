@@ -80,6 +80,7 @@ endfunction
 
 syntax on
 filetype plugin indent on
+set nocompatible
 
 set showcmd
 
@@ -115,9 +116,10 @@ if has('gui_running')
   set guioptions=aegit
 
   if has('win32')
-      set guifont=Consolas:h10.5
+      set guifont=Consolas:h11
       set columns=180
       set lines=50
+      let g:vimwiki_list = [{'path':'~/Documents/wiki', 'path_html':'~/Documents/export/html/'}]
   elseif has('gui_macvim')
       set guifont=Inconsolata:h14
       set columns=160
@@ -145,6 +147,11 @@ au FileType python set tabstop=4|set shiftwidth=4
 au FileType text set wrap|set lbr|set nocindent
 au FileType gitcommit set nowrap|set nocindent
 au FileType quicktask set nowrap|set nocindent
+au FileType quicktask set nowrap|set nocindent
+
+" The last format option enable autoformattng of paragraphs (which, turns
+" out, exists).
+au FileType vimwiki set nowrap|set nocindent|set tw=75|set guifont=Office_Code_Pro_Light:h14|Goyo 80
 
 if empty($MSYSTEM) || has('gui_running')
     colorscheme lucius
@@ -187,6 +194,8 @@ map <leader>t :CtrlPMixed<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>N :NERDTreeFind<cr>
 
+map <leader>C :Calendar<cr>
+
 cnoremap bd<CR> execute "normal \<Plug>Kwbd"<CR>
 cnoremap bd!<CR> execute "normal \<Plug>KwbdForce"<CR>
 
@@ -217,5 +226,8 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 "}}}

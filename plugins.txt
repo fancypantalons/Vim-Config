@@ -3,9 +3,13 @@ https://github.com/vim-scripts/dbext.vim.git
 https://github.com/kchmck/vim-coffee-script.git
 https://github.com/bling/vim-airline.git
 https://github.com/vim-airline/vim-airline-themes.git
-github.com/scrooloose/nerdtree
+https://github.com/scrooloose/nerdtree.git
 git://github.com/msanders/snipmate.vim.git
 git@github.com:fancypantalons/kwbdi.vim.git
 git://github.com/kien/ctrlp.vim.git
 https://github.com/embear/vim-localvimrc
 git://github.com/tpope/vim-fugitive.git
+git://github.com/mattn/calendar-vim
+https://github.com/vimwiki/vimwiki.git
+https://github.com/junegunn/goyo.vim.git
+https://github.com/junegunn/limelight.vim.git
