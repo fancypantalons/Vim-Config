@@ -13,3 +13,4 @@ git://github.com/mattn/calendar-vim
 https://github.com/vimwiki/vimwiki.git
 https://github.com/junegunn/goyo.vim.git
 https://github.com/junegunn/limelight.vim.git
+https://github.com/reedes/vim-pencil.git

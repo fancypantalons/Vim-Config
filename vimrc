@@ -140,6 +140,9 @@ let g:airline_detect_whitespace=0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
+" Switch to two spaces after a period for prose.
+let g:pencil#joinspaces = 1
+
 au FileType make set noexpandtab|set nosmarttab
 au FileType cf set tabstop=4|set shiftwidth=4
 au FileType sql set tabstop=4|set shiftwidth=4
@@ -151,7 +154,7 @@ au FileType quicktask set nowrap|set nocindent
 
 " The last format option enable autoformattng of paragraphs (which, turns
 " out, exists).
-au FileType vimwiki set nowrap|set nocindent|set tw=75|set guifont=Office_Code_Pro_Light:h14|Goyo 80
+au FileType vimwiki set nowrap|set nocindent|set tw=75|set guifont=Office_Code_Pro_Light:h14|call pencil#init({'wrap': 'hard'})
 
 if empty($MSYSTEM) || has('gui_running')
     colorscheme lucius
@@ -195,6 +198,7 @@ map <leader>n :NERDTreeToggle<cr>
 map <leader>N :NERDTreeFind<cr>
 
 map <leader>C :Calendar<cr>
+map <leader>G :Goyo<cr>
 
 cnoremap bd<CR> execute "normal \<Plug>Kwbd"<CR>
 cnoremap bd!<CR> execute "normal \<Plug>KwbdForce"<CR>
