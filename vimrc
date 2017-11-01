@@ -81,6 +81,8 @@ endfunction
 syntax on
 filetype plugin indent on
 set nocompatible
+set nobackup
+set noswapfile
 
 set showcmd
 
