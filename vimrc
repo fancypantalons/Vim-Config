@@ -149,8 +149,6 @@ au FileType sql set tabstop=4|set shiftwidth=4
 au FileType python set tabstop=4|set shiftwidth=4
 au FileType text set wrap|set lbr|set nocindent
 au FileType gitcommit set nowrap|set nocindent
-au FileType quicktask set nowrap|set nocindent
-au FileType quicktask set nowrap|set nocindent
 
 " The last format option enable autoformattng of paragraphs (which, turns
 " out, exists).
