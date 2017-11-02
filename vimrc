@@ -143,6 +143,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 " Switch to two spaces after a period for prose.
+let g:goyo_width = 75
 let g:pencil#joinspaces = 1
 
 au FileType make set noexpandtab|set nosmarttab
