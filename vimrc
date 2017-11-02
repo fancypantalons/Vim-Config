@@ -155,7 +155,7 @@ au FileType gitcommit set nowrap|set nocindent
 
 " The last format option enable autoformattng of paragraphs (which, turns
 " out, exists).
-au FileType vimwiki set nowrap|set nocindent|set tw=75|set guifont=Office_Code_Pro_Light:h14|call pencil#init({'wrap': 'soft'})|set sbr=
+au FileType vimwiki set guifont=Office_Code_Pro_Light:h14|call pencil#init({'wrap': 'soft'})|set sbr=
 
 if empty($MSYSTEM) || has('gui_running')
     colorscheme lucius
