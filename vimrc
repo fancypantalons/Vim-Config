@@ -200,6 +200,7 @@ map <leader>N :NERDTreeFind<cr>
 
 map <leader>C :Calendar<cr>
 map <leader>G :Goyo<cr>
+map <leader>V :Voom vimwiki<cr>
 
 cnoremap bd<CR> execute "normal \<Plug>Kwbd"<CR>
 cnoremap bd!<CR> execute "normal \<Plug>KwbdForce"<CR>
