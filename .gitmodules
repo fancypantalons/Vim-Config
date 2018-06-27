@@ -52,3 +52,12 @@
 [submodule "fonts/Office-Code-Pro"]
 	path = fonts/Office-Code-Pro
 	url = https://github.com/nathco/Office-Code-Pro.git
+[submodule "bundle/vim-misc"]
+	path = bundle/vim-misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule "bundle/vim-shell"]
+	path = bundle/vim-shell
+	url = https://github.com/xolox/vim-shell.git
+[submodule "FixGVimBorder"]
+	path = FixGVimBorder
+	url = https://github.com/gabr/FixGVimBorder
