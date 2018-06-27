@@ -83,6 +83,7 @@ filetype plugin indent on
 set nocompatible
 set nobackup
 set noswapfile
+set belloff=all
 
 set showcmd
 
@@ -118,14 +119,22 @@ if has('gui_running')
   set guioptions=aegit
 
   if has('win32')
-      set guifont=Consolas:h11
+      set guifont=Consolas:h9
       set columns=180
       set lines=50
-      let g:vimwiki_list = [{'path':'~/Documents/wiki', 'path_html':'~/Documents/export/html/'}]
-  elseif has('gui_macvim')
-      set guifont=Inconsolata:h14
-      set columns=160
-      set lines=50
+
+      let wiki_personal = {}
+      let wiki_personal.path = '~/Documents/wiki/'
+      let wiki_personal.path_html = '~/Documents/export/html/'
+
+      let wiki_invidi = {}
+      let wiki_invidi.path = '~/OneDrive - INVIDI Technologies Corp/wiki/content/'
+      let wiki_invidi.path_html = '~/OneDrive - INVIDI Technologies Corp/wiki/markup/'
+
+      let g:vimwiki_list = [wiki_personal, wiki_invidi]
+      let g:vimwiki_folding = 'syntax'
+
+      autocmd GUIEnter * call libcall("loadfixgvimborder.dll", "LoadFixGVimBorder", 0)
   else
       set guifont=Inconsolata\ Medium\ 12
       set columns=160
@@ -155,18 +164,18 @@ au FileType gitcommit set nowrap|set nocindent
 
 " The last format option enable autoformattng of paragraphs (which, turns
 " out, exists).
-au FileType vimwiki set guifont=Office_Code_Pro_Light:h14|call pencil#init({'wrap': 'soft'})|set sbr=
+au FileType vimwiki set guifont=Nitti_Basic_Light:h14|call pencil#init({'wrap': 'soft'})|set sbr=|set foldlevel=99|set spell
 
 if empty($MSYSTEM) || has('gui_running')
     colorscheme lucius
 endif
 
 if has('win32')
-    let &grepprg="\"C:/GnuWin32/bin/grep.exe\" -n $*"
-    let g:netrw_localcopycmd="C:/GnuWin32/bin/cp.exe"
-    let g:netrw_localmovecmd="C:/GnuWin32/bin/mv.exe"
-    let g:netrw_localmkdir="C:/GnuWin32/bin/mkdir.exe"
-    let g:netrw_localrmdir="C:/GnuWin32/bin/rmdir.exe"
+    let &grepprg="\"C:/Program Files (x86)/GnuWin32/bin/grep.exe\" -n $*"
+    let g:netrw_localcopycmd="C:/Program Files (x86)/GnuWin32/bin/cp.exe"
+    let g:netrw_localmovecmd="C:/Program Files (x86)/GnuWin32/bin/mv.exe"
+    let g:netrw_localmkdir="C:/Program Files (x86)/GnuWin32/bin/mkdir.exe"
+    let g:netrw_localrmdir="C:/Program Files (x86)/GnuWin32/bin/rmdir.exe"
 else
     set list listchars=tab:».,trail:°
 endif
