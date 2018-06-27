@@ -27,4 +27,6 @@ This configuration is designed to be cross-platform, as I maintain a foot in bot
 4. mklink c:\path\to\home\_vimrc c:\path\to\Vim-Config\vimrc
 5. mklink /d c:\path\to\home\vimfiles\bundle c:\path\to\Vim-Config\bundle
 6. mklink c:\path\to\home\vimfiles\colors\lucius.vim c:\path\to\Vim-Config\lucius.vim
+7. copy c:\path\to\Vim-Config\FixGVimBorder\fixgvimborder64.dll c:\Program Files (x86)\vim\vim80\fixgvimborder.dll
+7. copy c:\path\to\Vim-Config\FixGVimBorder\loadfixgvimborder64.dll c:\Program Files (x86)\vim\vim80\loadfixgvimborder.dll
 7. Install fonts
