@@ -18,8 +18,17 @@ This configuration is designed to be cross-platform, as I maintain a foot in bot
 3. ln -s /path/to/home/.vim/colors/lucius.vim /path/to/Vim-Config/lucius.vim
 5. ln -s /path/to/home/.tmux.conf /path/to/Vim-Config/tmux.conf
 4. Install fonts
+5. Edit ~/.config/gtk-3.0/gtk.css and add the following:
 
-## Windows 
+<pre>
+  @define-color YOUR_BACKGROUND_COLOR #202020;
+
+  window#vim-main-window {
+      background-color: @YOUR_BACKGROUND_COLOR;
+  }
+</pre>
+
+## Windows
 
 1. Install GnuWin32 CoreUtils
 2. Install GnuWin32 Grep

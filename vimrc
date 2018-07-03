@@ -135,10 +135,13 @@ if has('gui_running')
       let g:vimwiki_folding = 'syntax'
 
       autocmd GUIEnter * call libcall("loadfixgvimborder.dll", "LoadFixGVimBorder", 0)
+      au FileType vimwiki set guifont=Nitti_Basic_Light:h14
   else
       set guifont=Inconsolata\ Medium\ 12
       set columns=160
       set lines=50
+
+      au FileType vimwiki set guifont=Nitti\ Basic\ Light\ 14
   endif
 endif
 
@@ -164,7 +167,7 @@ au FileType gitcommit set nowrap|set nocindent
 
 " The last format option enable autoformattng of paragraphs (which, turns
 " out, exists).
-au FileType vimwiki set guifont=Nitti_Basic_Light:h14|call pencil#init({'wrap': 'soft'})|set sbr=|set foldlevel=99|set spell
+au FileType vimwiki call pencil#init({'wrap': 'soft'})|set sbr=|set foldlevel=99|set spell
 
 if empty($MSYSTEM) || has('gui_running')
     colorscheme lucius
@@ -213,6 +216,9 @@ map <leader>V :Voom vimwiki<cr>
 
 cnoremap bd<CR> execute "normal \<Plug>Kwbd"<CR>
 cnoremap bd!<CR> execute "normal \<Plug>KwbdForce"<CR>
+
+let g:shell_mappings_enabled = 0
+nnoremap <F11> :Fullscreen<CR>:Goyo<CR>
 
 "
 " I prefer editors which switch the current working directory to that of the
