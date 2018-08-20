@@ -213,12 +213,27 @@ map <leader>N :NERDTreeFind<cr>
 map <leader>C :Calendar<cr>
 map <leader>G :Goyo<cr>
 map <leader>V :Voom vimwiki<cr>
+nnoremap <F11> :Fullscreen<CR>:Goyo<CR>
+
+" Some mappings for adjusting font sizes
+nnoremap <leader>+ :silent! let &guifont = substitute(
+ \ &guifont,
+ \ ':h\zs\d\+',
+ \ '\=eval(submatch(0)+1)',
+ \ 'g')<CR>
+
+nnoremap <leader>- :silent! let &guifont = substitute(
+ \ &guifont,
+ \ ':h\zs\d\+',
+ \ '\=eval(submatch(0)-1)',
+ \ 'g')<CR>
+
+let g:shell_mappings_enabled = 0
+
+" Mappings to change how buffer deletes work
 
 cnoremap bd<CR> execute "normal \<Plug>Kwbd"<CR>
 cnoremap bd!<CR> execute "normal \<Plug>KwbdForce"<CR>
-
-let g:shell_mappings_enabled = 0
-nnoremap <F11> :Fullscreen<CR>:Goyo<CR>
 
 "
 " I prefer editors which switch the current working directory to that of the
