@@ -218,13 +218,13 @@ nnoremap <F11> :Fullscreen<CR>:Goyo<CR>
 " Some mappings for adjusting font sizes
 nnoremap <leader>+ :silent! let &guifont = substitute(
  \ &guifont,
- \ ':h\zs\d\+',
+ \ '\(h:\\| \)\zs\d\+$',
  \ '\=eval(submatch(0)+1)',
  \ 'g')<CR>
 
 nnoremap <leader>- :silent! let &guifont = substitute(
  \ &guifont,
- \ ':h\zs\d\+',
+ \ '\(h:\\| \)\zs\d\+$',
  \ '\=eval(submatch(0)-1)',
  \ 'g')<CR>
 
