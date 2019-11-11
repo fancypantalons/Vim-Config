@@ -62,10 +62,27 @@ endfunction
 " buffer.
 "
 function! MakeGuid()
-python << EOF
+py3 << EOF
 import vim
 import uuid
 vim.command('let @z="' + str(uuid.uuid4()).upper() + '"')
+vim.command('normal "zP');
+
+(row, col) = vim.current.window.cursor
+
+vim.current.window.cursor = (row, col + 1)
+EOF
+endfunction
+
+function! MakeWikiGuid()
+py3 << EOF
+import vim
+import uuid
+
+guid = str(uuid.uuid4()).upper()
+abbr = guid.split("-")[0]
+
+vim.command('let @z="' + '[[' + guid + '|' + abbr + ']]' + '"')
 vim.command('normal "zP');
 
 (row, col) = vim.current.window.cursor
@@ -123,25 +140,17 @@ if has('gui_running')
       set columns=180
       set lines=50
 
-      let wiki_personal = {}
-      let wiki_personal.path = '~/Documents/wiki/'
-      let wiki_personal.path_html = '~/Documents/export/html/'
-
-      let wiki_invidi = {}
-      let wiki_invidi.path = '~/OneDrive - INVIDI Technologies Corp/wiki/content/'
-      let wiki_invidi.path_html = '~/OneDrive - INVIDI Technologies Corp/wiki/markup/'
-
-      let g:vimwiki_list = [wiki_personal, wiki_invidi]
       let g:vimwiki_folding = 'syntax'
 
       autocmd GUIEnter * call libcall("loadfixgvimborder.dll", "LoadFixGVimBorder", 0)
+
       au FileType vimwiki set guifont=Nitti_Basic_Light:h14
   else
       set guifont=Inconsolata\ Medium\ 12
       set columns=160
       set lines=50
 
-      au FileType vimwiki set guifont=Nitti\ Basic\ Light\ 14
+      au FileType vimwiki set guifont=Nitti\ Basic\ Light\ 18
   endif
 endif
 
@@ -167,7 +176,7 @@ au FileType gitcommit set nowrap|set nocindent
 
 " The last format option enable autoformattng of paragraphs (which, turns
 " out, exists).
-au FileType vimwiki call pencil#init({'wrap': 'soft'})|set sbr=|set foldlevel=99|set spell
+au FileType vimwiki call pencil#init({'wrap': 'soft'})|set sbr=|set foldlevel=99|set spell|set syntax=markdown
 
 if empty($MSYSTEM) || has('gui_running')
     colorscheme lucius
@@ -197,6 +206,7 @@ let NERDTreeShowBookmarks=1
 
 map ; :
 map <leader>g :call MakeGuid()<cr>
+map <leader>wg :call MakeWikiGuid()<cr>
 map <leader>s :Gstatus<cr>
 map <leader>d :Gdiff<cr>
 map <leader>l :Glog -- %<cr>
@@ -212,7 +222,7 @@ map <leader>N :NERDTreeFind<cr>
 
 map <leader>C :Calendar<cr>
 map <leader>G :Goyo<cr>
-map <leader>V :Voom vimwiki<cr>
+map <leader>V :Voom markdown<cr>
 nnoremap <F11> :Fullscreen<CR>:Goyo<CR>
 
 " Some mappings for adjusting font sizes
@@ -265,5 +275,28 @@ autocmd QuickFixCmdPost    l* nested lwindow
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+let wiki_personal = {}
+let wiki_personal.path = '~/vimwiki/'
+let wiki_personal.path_html = '~/vimwiki/export/html/'
+let wiki_personal.syntax = 'markdown'
+let wiki_personal.ext = '.md'
+
+let wiki_work = {}
+let wiki_work.path = '~/work-wiki/content/'
+let wiki_work.path_html = '~/work-wiki/export/'
+let wiki_work.syntax = 'markdown'
+let wiki_work.ext = '.md'
+
+let wiki_crypt = {}
+let wiki_crypt.path = '~/crypt-wiki/content/'
+let wiki_crypt.path_html = '~/crypt-wiki/export/'
+let wiki_crypt.syntax = 'markdown'
+let wiki_crypt.ext = ".md.gpg"
+
+let g:vimwiki_list = [wiki_personal, wiki_work, wiki_crypt]
+
+let g:GPGPreferArmor = 1
+let g:GPGDefaultRecipients = ["fancypantalons@gmail.com"]
 
 "}}}
