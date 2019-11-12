@@ -167,6 +167,8 @@ let g:airline_right_sep=''
 let g:goyo_width = 75
 let g:pencil#joinspaces = 1
 
+let g:vimwiki_table_mappings = 0
+
 au FileType make set noexpandtab|set nosmarttab
 au FileType cf set tabstop=4|set shiftwidth=4
 au FileType sql set tabstop=4|set shiftwidth=4
@@ -276,27 +278,36 @@ autocmd QuickFixCmdPost    l* nested lwindow
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-let wiki_personal = {}
-let wiki_personal.path = '~/vimwiki/'
-let wiki_personal.path_html = '~/vimwiki/export/html/'
-let wiki_personal.syntax = 'markdown'
-let wiki_personal.ext = '.md'
+if has('win32')
+else
+  let wiki_personal = {}
+  let wiki_personal.path = '~/vimwiki/'
+  let wiki_personal.path_html = '~/vimwiki/export/html/'
+  let wiki_personal.syntax = 'markdown'
+  let wiki_personal.ext = '.md'
 
-let wiki_work = {}
-let wiki_work.path = '~/work-wiki/content/'
-let wiki_work.path_html = '~/work-wiki/export/'
-let wiki_work.syntax = 'markdown'
-let wiki_work.ext = '.md'
+  let wiki_work = {}
+  let wiki_work.path = '~/work-wiki/content/'
+  let wiki_work.path_html = '~/work-wiki/export/'
+  let wiki_work.syntax = 'markdown'
+  let wiki_work.ext = '.md'
 
-let wiki_crypt = {}
-let wiki_crypt.path = '~/crypt-wiki/content/'
-let wiki_crypt.path_html = '~/crypt-wiki/export/'
-let wiki_crypt.syntax = 'markdown'
-let wiki_crypt.ext = ".md.gpg"
+  let wiki_crypt = {}
+  let wiki_crypt.path = '~/crypt-wiki/content/'
+  let wiki_crypt.path_html = '~/crypt-wiki/export/'
+  let wiki_crypt.syntax = 'markdown'
+  let wiki_crypt.ext = ".md.gpg"
 
-let g:vimwiki_list = [wiki_personal, wiki_work, wiki_crypt]
+  let wiki_blog = {}
+  let wiki_blog.path = '~/blog/'
+  let wiki_blog.syntax = 'markdown'
+  let wiki_blog.diary_rel_path = '_posts/'
+  let wiki_blog.ext = '.md'
 
-let g:GPGPreferArmor = 1
-let g:GPGDefaultRecipients = ["fancypantalons@gmail.com"]
+  let g:vimwiki_list = [wiki_personal, wiki_work, wiki_crypt, wiki_blog]
+
+  let g:GPGPreferArmor = 1
+  let g:GPGDefaultRecipients = ["fancypantalons@gmail.com"]
+endif
 
 "}}}
