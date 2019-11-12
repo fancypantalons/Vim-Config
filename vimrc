@@ -166,6 +166,7 @@ let g:goyo_width = 75
 let g:pencil#joinspaces = 1
 
 let g:vimwiki_table_mappings = 0
+let g:vimwiki_listsyms = " .ox"
 
 au FileType make set noexpandtab|set nosmarttab
 au FileType cf set tabstop=4|set shiftwidth=4
