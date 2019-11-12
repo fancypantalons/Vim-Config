@@ -140,8 +140,6 @@ if has('gui_running')
       set columns=180
       set lines=50
 
-      let g:vimwiki_folding = 'syntax'
-
       autocmd GUIEnter * call libcall("loadfixgvimborder.dll", "LoadFixGVimBorder", 0)
 
       au FileType vimwiki set guifont=Nitti_Basic_Light:h14
@@ -279,6 +277,13 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 if has('win32')
+  let wiki_work = {}
+  let wiki_work.path = '~/Documents/work-wiki/content/'
+  let wiki_work.path_html = '~/Documents/work-wiki/export/'
+  let wiki_work.syntax = 'markdown'
+  let wiki_work.ext = '.md'
+
+  let g:vimwiki_list = [wiki_work]
 else
   let wiki_personal = {}
   let wiki_personal.path = '~/vimwiki/'
