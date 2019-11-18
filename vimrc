@@ -282,6 +282,7 @@ if has('win32')
   let wiki_work.path = '~/Documents/work-wiki/content/'
   let wiki_work.path_html = '~/Documents/work-wiki/export/'
   let wiki_work.syntax = 'markdown'
+  let wiki_work.links_space_char = '_'
   let wiki_work.ext = '.md'
 
   let g:vimwiki_list = [wiki_work]
