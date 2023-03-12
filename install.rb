@@ -27,16 +27,18 @@ def update_plugins()
   system("sh git-layer --apply")
 end
 
-def infect(target)
+def infect(targets)
   pg = "pathogen.vim"
 
   system("curl", "-LSso", pg, "https://tpo.pe/%s" % pg)
 
-  al = File.join(target, "autoload")
+  targets.each do |target|
+    al = File.join(target, "autoload")
 
-  mkdir(al)
+    mkdir(al)
 
-  link(File.join(Dir.pwd, pg), File.join(al, pg))
+    link(File.join(Dir.pwd, pg), File.join(al, pg))
+  end
 end
 
 update_plugins()
@@ -47,8 +49,7 @@ nvimdir = File.join(Dir.home, ".config", "nvim")
 mkdir(vimdir)
 mkdir(nvimdir)
 
-infect(vimdir)
-infect(nvimdir)
+infect([ vimdir, nvimdir ])
 
 paths = {
   "init.vim" => [ File.join(Dir.home, ".vimrc"), File.join(nvimdir, "init.vim") ],
