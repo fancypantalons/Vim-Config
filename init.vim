@@ -305,13 +305,6 @@ else
   let wiki_work.links_space_char = '_'
   let wiki_work.ext = '.md'
 
-  let wiki_crypt = {}
-  let wiki_crypt.path = '~/crypt-wiki/content/'
-  let wiki_crypt.path_html = '~/crypt-wiki/export/'
-  let wiki_crypt.syntax = 'markdown'
-  let wiki_crypt.links_space_char = '_'
-  let wiki_crypt.ext = ".md.gpg"
-
   let wiki_blog = {}
   let wiki_blog.path = '~/blog/'
   let wiki_blog.syntax = 'markdown'
@@ -319,7 +312,7 @@ else
   let wiki_blog.links_space_char = '_'
   let wiki_blog.ext = '.md'
 
-  let g:vimwiki_list = [wiki_personal, wiki_work, wiki_crypt, wiki_blog]
+  let g:vimwiki_list = [wiki_personal, wiki_work, wiki_blog]
 
   let g:GPGPreferArmor = 1
   let g:GPGDefaultRecipients = ["fancypantalons@gmail.com"]
