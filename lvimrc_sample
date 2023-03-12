@@ -1,8 +1,0 @@
-if (!exists("g:nethackds_lvimrc"))
-  let g:nethackds_lvimrc = 1
-  let s:rcpath=expand("<sfile>:p:h")
-
-  exec "set makeprg=" . fnameescape("cd " . s:rcpath . " && make -f sys/nds/Makefile")
-
-  call LocalVimRCLoadedHook(s:rcpath)
-endif

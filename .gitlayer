@@ -1,0 +1,14 @@
+https://github.com/tpope/vim-surround.git bundle/vim-surround
+https://github.com/bling/vim-airline.git bundle/vim-airline
+https://github.com/vim-airline/vim-airline-themes.git bundle/vim-airline-themes
+https://github.com/scrooloose/nerdtree.git bundle/nerdtree
+https://github.com/msanders/snipmate.vim.git bundle/snipmate.vim
+https://github.com/fancypantalons/kwbdi.vim.git bundle/kwbdi.vim
+https://github.com/embear/vim-localvimrc.git bundle/vim-localvimrc
+https://github.com/tpope/vim-fugitive.git bundle/vim-fugitive
+https://github.com/vimwiki/vimwiki.git bundle/vimwiki
+https://github.com/junegunn/goyo.vim.git bundle/goyo.vim
+https://github.com/junegunn/limelight.vim.git bundle/limelight.vim
+https://github.com/reedes/vim-pencil.git bundle/vim-pencil
+https://github.com/vim-voom/VOoM.git bundle/VOoM
+https://github.com/plasticboy/vim-markdown.git bundle/vim-markdown

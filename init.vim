@@ -1,10 +1,7 @@
 " Attempt to load pathogen for package management.  If it's not availble
 " no biggie.
-try
     call pathogen#infect()
     Helptags
-catch /.*/
-endtry
 
 "{{{ User-defined Functions
 
@@ -288,8 +285,8 @@ if has('win32')
   let g:vimwiki_list = [wiki_work]
 else
   let wiki_personal = {}
-  let wiki_personal.path = '~/vimwiki/'
-  let wiki_personal.path_html = '~/vimwiki/export/html/'
+  let wiki_personal.path = '~/wiki/'
+  let wiki_personal.path_html = '~/wiki/export/html/'
   let wiki_personal.syntax = 'markdown'
   let wiki_personal.links_space_char = '_'
   let wiki_personal.ext = '.md'
