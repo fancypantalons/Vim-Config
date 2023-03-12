@@ -221,7 +221,6 @@ map <leader>N :NERDTreeFind<cr>
 map <leader>C :Calendar<cr>
 map <leader>G :Goyo<cr>
 map <leader>V :Voom markdown<cr>
-nnoremap <F11> :Fullscreen<CR>:Goyo<CR>
 
 " Some mappings for adjusting font sizes
 nnoremap <leader>+ :silent! let &guifont = substitute(
@@ -316,6 +315,12 @@ else
 
   let g:GPGPreferArmor = 1
   let g:GPGDefaultRecipients = ["fancypantalons@gmail.com"]
+endif
+
+if has('nvim')
+lua <<EOF
+require'lspconfig'.marksman.setup{}
+EOF
 endif
 
 "}}}
