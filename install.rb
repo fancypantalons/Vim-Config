@@ -24,10 +24,6 @@ end
 def update_plugins()
   system("curl", "-LSso", "git-layer", "https://raw.githubusercontent.com/frison/git-layer/main/git-layer")
 
-  File.open(".gitlayer").each do |line|
-    mkdir(line.split(" ")[1])
-  end
-
   system("sh git-layer --apply")
 end
 
