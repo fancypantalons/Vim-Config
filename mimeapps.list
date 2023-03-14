@@ -1,0 +1,3 @@
+x-scheme-handler/ssh=jaro-urls.desktop
+x-scheme-handler/http=jaro-urls.desktop
+x-scheme-handler/https=jaro-urls.desktop

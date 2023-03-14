@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=jaro
+GenericName=URL opener
+Terminal=false
+Exec=jaro %U
+Type=Application
+Categories=Utility;

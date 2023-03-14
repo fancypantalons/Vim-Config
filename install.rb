@@ -51,12 +51,18 @@ mkdir(nvimdir)
 
 infect([ vimdir, nvimdir ])
 
+system("curl", "-LSso", "jaro", "https://raw.githubusercontent.com/isamert/jaro/master/jaro")
+FileUtils.chmod(0755, "jaro")
+
 paths = {
   "init.vim" => [ File.join(Dir.home, ".vimrc"), File.join(nvimdir, "init.vim") ],
   "ginit.vim" => [ File.join(nvimdir, "ginit.vim") ],
   "tmux.conf" => [ File.join(Dir.home, ".tmux.conf") ],
   "bundle" => [ File.join(vimdir, "bundle"), File.join(nvimdir, "bundle") ],
-  "colors" => [ File.join(vimdir, "colors"), File.join(nvimdir, "colors") ]
+  "colors" => [ File.join(vimdir, "colors"), File.join(nvimdir, "colors") ],
+  "jaro" => [ File.join(Dir.home, ".local", "bin", "jaro") ],
+  "associations" => [ File.join(Dir.home, ".config", "associations") ],
+  "jaro.desktop" => [ File.join(Dir.home, ".local", "share", "applications", "jaro.desktop") ]
 }
 
 paths.keys.each do |source|
