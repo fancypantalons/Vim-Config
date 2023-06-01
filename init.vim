@@ -162,8 +162,20 @@ let g:airline_right_sep=''
 let g:goyo_width = 75
 let g:pencil#joinspaces = 1
 
-let g:vimwiki_table_mappings = 0
 let g:vimwiki_listsyms = " .ox"
+let g:vimwiki_key_mappings =
+  \ {
+  \   'all_maps': 1,
+  \   'global': 1,
+  \   'headers': 1,
+  \   'text_objs': 1,
+  \   'table_format': 1,
+  \   'table_mappings': 0,
+  \   'lists': 1,
+  \   'links': 1,
+  \   'html': 1,
+  \   'mouse': 0,
+  \ }
 
 au FileType make set noexpandtab|set nosmarttab
 au FileType cf set tabstop=4|set shiftwidth=4
