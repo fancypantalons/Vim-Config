@@ -12,3 +12,4 @@ https://github.com/junegunn/limelight.vim.git bundle/limelight.vim
 https://github.com/reedes/vim-pencil.git bundle/vim-pencil
 https://github.com/vim-voom/VOoM.git bundle/VOoM
 https://github.com/plasticboy/vim-markdown.git bundle/vim-markdown
+https://github.com/iamcco/markdown-preview.nvim.git bundle/markdown-preview.nvim

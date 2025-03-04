@@ -37,7 +37,7 @@ function! LocalVimRCLoadedHook(rcpath)
 endfunction
 
 function! ChangeToFileDir()
-    if expand("%") !~ "fugitive"
+    if expand("%") !~ "fugitive" && expand("%") !~ "term://"
         exec "cd " . fnameescape(expand("%:p:h"))
     endif
 endfunction
