@@ -50,20 +50,10 @@ cmp.setup.filetype('vimwiki', {
   })
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-require("mason-lspconfig").setup_handlers {
-  function (server_name)
-    require("lspconfig")[server_name].setup {
-        capabilities = capabilities
-    }
-  end
-}
-
 require("telescope").setup()
 require("telescope").load_extension('fzf')
 
-require("lspconfig").solargraph.setup {
+vim.lsp.config('solargraph', {
   capabilities = capabilities,
   settings = {
     solargraph = {
@@ -79,5 +69,12 @@ require("lspconfig").solargraph.setup {
       hover=true
     }
   }
-}
+})
 
+vim.diagnostic.config({
+  virtual_text = { current_line = true },
+  virtual_lines = false,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+})
