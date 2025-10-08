@@ -64,3 +64,5 @@ let wiki_blog.links_space_char = '_'
 let wiki_blog.ext = '.md'
 
 let g:vimwiki_list = [wiki_personal, wiki_blog]
+
+let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'index.md']

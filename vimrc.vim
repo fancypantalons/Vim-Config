@@ -1,5 +1,5 @@
 function! ChangeToFileDir()
-    if expand("%") !~ "fugitive" && expand("%") !~ "term://"
+    if expand("%") !~ "fugitive" && expand("%") !~ "term:" && expand("%") !~ "diffview:"
         exec "cd " . fnameescape(expand("%:p:h"))
     endif
 endfunction
@@ -38,7 +38,8 @@ set smartcase
 " Keymappings
 
 map ; :
-map <leader>n :NvimTreeToggle<cr>
+map <leader>n :NvimTreeFocus<cr>
+tnoremap <Esc> <C-\><C-n>
 
 map <leader>G :Goyo<cr>
 
@@ -48,6 +49,10 @@ nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>r <cmd>Telescope lsp_references<cr>
 nnoremap <leader>i <cmd>Telescope lsp_implementations<cr>
+nnoremap <leader>R <cmd>Telescope resume<cr>
+nnoremap <leader>D :lua vim.lsp.buf.definition()<cr>
+
+nnoremap <leader>gd :Gdiffsplit<cr>
 
 nnoremap <leader>dt :lua require("dapui").toggle()<cr>
 nnoremap <leader>dl :lua require("dap.ui.widgets").hover<cr>

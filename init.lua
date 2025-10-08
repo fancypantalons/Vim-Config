@@ -86,7 +86,7 @@ require("lazy").setup({
     build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" 
   },
   "mfussenegger/nvim-jdtls",
-  "hdiniz/vim-gradle",
+--  "hdiniz/vim-gradle", -- Seems to be incompatible with Diffview?
   "mfussenegger/nvim-dap",
   "rcarriga/nvim-dap-ui",
   {
@@ -104,6 +104,10 @@ require("lazy").setup({
       }
     end,
   },
+  "ribelo/taskwarrior.nvim",
+  "tools-life/taskwiki",
+  "sindrets/diffview.nvim",
+  "tpope/vim-fugitive"
 })
 
 require('lsp')
